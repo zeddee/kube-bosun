@@ -1,0 +1,6 @@
+[submodule "py-spy"]
+	path = py-spy
+	url = https://github.com/benfred/py-spy
+[submodule "delve"]
+	path = delve
+	url = https://github.com/go-delve/delve
