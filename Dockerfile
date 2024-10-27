@@ -2,6 +2,7 @@ FROM rust:1.81 as pyspybuilder
 
 COPY py-spy /app
 WORKDIR /app
+RUN ls -lah
 # Built artifact will be at /app/release/py-spy0
 RUN cargo build --release --target-dir=/app 
 
@@ -9,6 +10,7 @@ FROM golang:1.23 as delvebuilder
 
 COPY delve /app
 WORKDIR /app
+RUN ls -lah
 RUN make build
 RUN cp dlv /app/dlv
 
