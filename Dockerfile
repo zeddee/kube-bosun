@@ -25,5 +25,10 @@ COPY --from=delvebuilder /app/dlv /usr/bin/dlv
 
 RUN chmod +x /usr/bin/{dlv,py-spy}
 
+RUN apt-get update && apt-get install -y \
+  procps \
+  gdb && \
+  apt-get clean 
+
 CMD ["bash"]
 
