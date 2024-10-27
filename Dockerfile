@@ -27,7 +27,7 @@ RUN chmod +x /usr/bin/{dlv,py-spy}
 
 RUN apt-get update && apt-get install -y \
   curl \
-  linix-perf \
+  linux-perf \
   procps \
   gdb && \
   apt-get clean 
