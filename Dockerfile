@@ -8,6 +8,7 @@ RUN cargo build --release --target-dir=/app
 FROM golang:1.23 as delvebuilder
 
 COPY delve /app
+WORKDIR /app
 RUN make build
 RUN cp dlv /app/dlv
 
