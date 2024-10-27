@@ -9,7 +9,7 @@ RUN apt-get update && \
 RUN rustup target add x86_64-unknown-linux-gnu
 # Built artifact will be at /app/release/py-spy0
 RUN cargo build --release --target-dir=/app --target=x86_64-unknown-linux-gnu 
-RUN ls -lah /app/release
+RUN ls -lah /app/x86_64-unknown-linux-gnu/release
 FROM golang:1.23 as delvebuilder
 
 COPY delve /app
@@ -20,7 +20,7 @@ RUN make build
 FROM debian:bookworm
 SHELL ["/bin/bash", "-c"]
 
-COPY --from=pyspybuilder /app/release/py-spy /usr/bin/py-spy
+COPY --from=pyspybuilder /app/x86_64-unknown-linux-gnu/release/py-spy /usr/bin/py-spy
 COPY --from=delvebuilder /app/dlv /usr/bin/dlv
 
 RUN chmod +x /usr/bin/{dlv,py-spy}
