@@ -1,14 +1,14 @@
 FROM rust:1.81 as pyspybuilder
 
-RUN mkdir /app
-RUN cd py-spy || exit 1
+COPY py-spy /app
+WORKDIR /app
 # Built artifact will be at /app/release/py-spy0
 RUN cargo build --release --target-dir=/app 
 
 FROM golang:1.23 as delvebuilder
 
-RUN mkdir /app
-RUN cd delve && make build
+COPY delve /app
+RUN make build
 RUN cp dlv /app/dlv
 
 FROM debian:bookworm
