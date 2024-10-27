@@ -5,7 +5,7 @@ RUN cd py-spy || exit 1
 # Built artifact will be at /app/release/py-spy0
 RUN cargo build --release --target-dir=/app 
 
-FROM go:1.23 as delvebuilder
+FROM golang:1.23 as delvebuilder
 
 RUN mkdir /app
 RUN cd delve && make build
