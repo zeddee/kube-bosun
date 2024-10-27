@@ -12,7 +12,6 @@ COPY delve /app
 WORKDIR /app
 RUN ls -lah
 RUN make build
-RUN cp dlv /app/dlv
 
 FROM debian:bookworm
 SHELL ["/bin/bash", "-c"]
